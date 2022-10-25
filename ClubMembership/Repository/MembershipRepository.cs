@@ -68,7 +68,7 @@ namespace ClubMembership.Repository
             _DBContext.SaveChanges();
         }
 
-        public void UpdateMemberships(MembershipModel model)
+        public void UpdateMembership(MembershipModel model)
         {
             var dbobject = _DBContext.Memberships.FirstOrDefault(x => x.Idmembership == model.Idmembership);
 
@@ -83,9 +83,9 @@ namespace ClubMembership.Repository
                 _DBContext.SaveChanges();
             }
         }
-        public void DeleteMemberhip(MembershipModel model)
+        public void DeleteMembership(Guid id)
         {
-            var dbobject = _DBContext.Memberships.FirstOrDefault(x => x.Idmembership == model.Idmembership);
+            var dbobject = _DBContext.Memberships.FirstOrDefault(x => x.Idmembership == id);
             if (dbobject != null)
             {
                 _DBContext.Memberships.Remove(dbobject);

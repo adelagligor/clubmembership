@@ -60,7 +60,7 @@ namespace ClubMembership.Repository
             }
             return list;
         }
-        public CodeSnippetModel GetAnnouncementById(Guid id)
+        public CodeSnippetModel GetCodeSnippetById(Guid id)
         {
             return MapDBObjectToModel(_DBContext.CodeSnippets.FirstOrDefault(x => x.IdcodeSnippet == id));
 
@@ -89,9 +89,9 @@ namespace ClubMembership.Repository
                 _DBContext.SaveChanges();
             }
         }
-        public void DeleteCodeSnippet(CodeSnippetModel model)
+        public void DeleteCodeSnippet(Guid id)
         {
-            var dbobject = _DBContext.CodeSnippets.FirstOrDefault(x => x.IdcodeSnippet == model.IdcodeSnippet);
+            var dbobject = _DBContext.CodeSnippets.FirstOrDefault(x => x.IdcodeSnippet == id);
             if (dbobject != null)
             {
                 _DBContext.CodeSnippets.Remove(dbobject);
